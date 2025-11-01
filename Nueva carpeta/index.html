@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Tarjeta - Halloween Oscura</title>
+  <style>
+    :root{
+      --bg-1:#06060a;
+      --bg-2:#0f0b16;
+      --accent:#ff6b00;
+      --moon:#f7f3d9;
+      --fog:#0b0b0f;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      background: radial-gradient(1200px 600px at 10% 20%, rgba(38,18,53,0.35), transparent 10%),
+                  linear-gradient(180deg,var(--bg-1),var(--bg-2));
+      color:#eee;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:2rem;
+    }
+
+    /* tarjeta */
+    .card{
+      width:min(980px,95%);
+      height:560px;
+      border-radius:18px;
+      overflow:hidden;
+      position:relative;
+      box-shadow:0 20px 60px rgba(2,2,4,0.7), inset 0 1px 0 rgba(255,255,255,0.02);
+      background:linear-gradient(180deg, rgba(8,4,10,0.6), rgba(4,2,6,0.6));
+      border:1px solid rgba(255,255,255,0.03);
+    }
+
+    /* moon */
+    .moon{
+      position:absolute;
+      right:8%;
+      top:8%;
+      width:180px;
+      height:180px;
+      background:radial-gradient(circle at 30% 30%, var(--moon) 0 30%, #e9e5bf 31% 55%, rgba(255,255,255,0.06) 60%, rgba(0,0,0,0.12) 100%);
+      border-radius:50%;
+      filter:drop-shadow(0 20px 40px rgba(0,0,0,0.6));
+      transform:translateZ(0);
+      box-shadow:inset -12px -8px 30px rgba(0,0,0,0.15);
+      animation:moonfloat 8s ease-in-out infinite;
+    }
+    @keyframes moonfloat{
+      0%{transform:translateY(0)}
+      50%{transform:translateY(8px)}
+      100%{transform:translateY(0)}
+    }
+
+    /* subtle craters */
+    .moon::before, .moon::after{
+      content:'';
+      position:absolute;
+      background:rgba(0,0,0,0.06);
+      border-radius:50%;
+      mix-blend-mode:multiply;
+    }
+    .moon::before{width:44px;height:44px;left:26%;top:32%;}
+    .moon::after{width:26px;height:26px;left:62%;top:60%;}
+
+    /* ground silhouette */
+    .ground{
+      position:absolute;
+      bottom:0;left:0;right:0;
+      height:160px;
+      background:linear-gradient(180deg, rgba(0,0,0,0.0), rgba(0,0,0,0.8));
+      pointer-events:none;
+    }
+    .hills{
+      position:absolute;left:-10%;right:-10%;bottom:0;height:140px;background:
+        radial-gradient(600px 120px at 10% 100%, rgba(0,0,0,0.85) 40%, transparent 41%),
+        radial-gradient(500px 120px at 40% 100%, rgba(0,0,0,0.82) 40%, transparent 41%),
+        radial-gradient(700px 140px at 80% 100%, rgba(0,0,0,0.88) 40%, transparent 41%);
+      mix-blend-mode:multiply;
+    }
+
+    /* fog */
+    .fog{
+      position:absolute;left:0;right:0;bottom:110px;height:180px;pointer-events:none;overflow:hidden;
+    }
+    .fog .layer{
+      position:absolute;left:-20%;right:-20%;height:80px;top:10px;
+      background:linear-gradient(90deg,transparent, rgba(255,255,255,0.03), transparent);
+      filter:blur(18px);
+      opacity:0.12;
+      transform:translateX(-10%);
+      animation:drift 20s linear infinite;
+    }
+    .fog .layer.two{top:40px;opacity:0.08;animation-duration:28s;animation-direction:reverse}
+    .fog .layer.three{top:70px;opacity:0.06;animation-duration:36s}
+    @keyframes drift{0%{transform:translateX(-10%)}100%{transform:translateX(30%)}}
+
+    /* bats */
+    .bats{
+      position:absolute;left:6%;top:18%;width:360px;height:220px;pointer-events:none;
+    }
+    .bat{
+      position:absolute; width:48px;height:24px;transform-origin:center;
+      opacity:0.95;filter:drop-shadow(0 8px 12px rgba(0,0,0,0.6));
+    }
+    .bat svg{width:100%;height:100%;display:block}
+
+    /* bat flight paths */\    
+    .bat.one{left:10%;top:40%;animation:flyA 7s linear infinite}
+    .bat.two{left:30%;top:10%;animation:flyB 9s linear infinite}
+    .bat.three{left:60%;top:20%;animation:flyC 11s linear infinite}
+    .bat.four{left:80%;top:45%;animation:flyD 8.2s linear infinite}
+
+    @keyframes flyA{0%{transform:translate(0,0) rotate(0) scale(1)}25%{transform:translate(80px,-40px) rotate(-8deg) scale(.9)}50%{transform:translate(160px,10px) rotate(6deg) scale(1.05)}75%{transform:translate(80px,60px) rotate(-6deg) scale(.95)}100%{transform:translate(0,0) rotate(0) scale(1)}}
+    @keyframes flyB{0%{transform:translate(0,0) rotate(-10deg)}25%{transform:translate(120px,20px) rotate(8deg)}50%{transform:translate(240px,-20px) rotate(0deg)}75%{transform:translate(100px,-60px) rotate(10deg)}100%{transform:translate(0,0) rotate(-10deg)}}
+    @keyframes flyC{0%{transform:translate(0,0) rotate(8deg)}30%{transform:translate(-140px,-40px) rotate(-6deg)}60%{transform:translate(-60px,40px) rotate(10deg)}100%{transform:translate(0,0) rotate(8deg)}}
+    @keyframes flyD{0%{transform:translate(0,0) rotate(0)}20%{transform:translate(-80px,-30px) rotate(-8deg)}50%{transform:translate(-200px,20px) rotate(6deg)}80%{transform:translate(-100px,70px) rotate(-6deg)}100%{transform:translate(0,0) rotate(0)}}
+
+    /* pumpkin silhouette */
+    .pumpkin{
+      position:absolute;left:6%;bottom:28px;width:220px;height:160px;z-index:6;filter:drop-shadow(0 18px 40px rgba(0,0,0,0.7));
+    }
+    .glow{
+      position:absolute;left:6%;bottom:26px;width:260px;height:180px;border-radius:50%;
+      background:radial-gradient(circle at 50% 40%, rgba(255,107,0,0.18), transparent 30%);
+      mix-blend-mode:screen;pointer-events:none;filter:blur(20px);
+    }
+
+    /* small decorative stars */
+    .stars{position:absolute;left:6%;top:6%;width:40%;height:40%;pointer-events:none}
+    .stars .s{position:absolute;width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,0.85);opacity:0.9;box-shadow:0 0 10px rgba(255,255,255,0.15)}
+
+    /* subtle vignette */
+    .card::after{
+      content:'';position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+      background:radial-gradient(60% 40% at 40% 30%, transparent 0%, rgba(0,0,0,0.25) 40%, rgba(0,0,0,0.6) 100%);
+    }
+
+    /* responsive tweaks */
+    @media (max-width:600px){
+      .card{height:520px;border-radius:12px}
+      .moon{width:120px;height:120px;right:6%;top:6%}
+      .pumpkin{width:140px;height:100px}
+    }
+  </style>
+</head>
+<body>
+  <div class="card" role="img" aria-label="Tarjeta de Halloween oscura sin texto">
+    <div class="moon" aria-hidden="true"></div>
+
+    <div class="bats" aria-hidden="true">
+      <!-- simple bat SVG, reused -->
+      <div class="bat one"> 
+        <svg viewBox="0 0 64 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M2 18c6-6 14-6 20-2 6-4 14-4 20 2 6-6 14-6 20-2v12H2V18z" fill="#0b0b0b"/>
+        </svg>
+      </div>
+      <div class="bat two">
+        <svg viewBox="0 0 64 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M2 18c6-6 14-6 20-2 6-4 14-4 20 2 6-6 14-6 20-2v12H2V18z" fill="#0b0b0b"/>
+        </svg>
+      </div>
+      <div class="bat three">
+        <svg viewBox="0 0 64 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M2 18c6-6 14-6 20-2 6-4 14-4 20 2 6-6 14-6 20-2v12H2V18z" fill="#0b0b0b"/>
+        </svg>
+      </div>
+      <div class="bat four">
+        <svg viewBox="0 0 64 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M2 18c6-6 14-6 20-2 6-4 14-4 20 2 6-6 14-6 20-2v12H2V18z" fill="#0b0b0b"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="stars" aria-hidden="true">
+      <span class="s" style="left:4%;top:12%;width:3px;height:3px;"></span>
+      <span class="s" style="left:16%;top:6%;width:2px;height:2px;opacity:.6"></span>
+      <span class="s" style="left:24%;top:22%;width:3px;height:3px;opacity:.9"></span>
+      <span class="s" style="left:34%;top:8%;width:2px;height:2px;opacity:.7"></span>
+      <span class="s" style="left:12%;top:28%;width:2px;height:2px;opacity:.6"></span>
+    </div>
+
+    <div class="glow" aria-hidden="true"></div>
+
+    <div class="pumpkin" aria-hidden="true">
+      <!-- simple pumpkin silhouette with stem -->
+      <svg viewBox="0 0 320 220" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+        <g transform="translate(10,10)">
+          <ellipse cx="150" cy="120" rx="120" ry="80" fill="#1a0b00"/>
+          <ellipse cx="140" cy="120" rx="110" ry="72" fill="#2b1200"/>
+          <ellipse cx="150" cy="110" rx="90" ry="66" fill="#3a1600"/>
+          <path d="M150 22c6-18 26-28 42-20s12 36-8 46c-20 10-38 6-50 0-12-6-20-26-4-26 0 0 12-2 20 0z" fill="#14200a"/>
+          <path d="M150 40c40 0 70 28 70 60s-30 60-70 60-70-28-70-60 30-60 70-60z" fill="#ff6b00" opacity="0.06"/>
+        </g>
+      </svg>
+    </div>
+
+    <div class="fog" aria-hidden="true">
+      <div class="layer"></div>
+      <div class="layer two"></div>
+      <div class="layer three"></div>
+    </div>
+
+    <div class="hills" aria-hidden="true"></div>
+    <div class="ground" aria-hidden="true"></div>
+  </div>
+</body>
+</html>
+
+</body>
+</html>

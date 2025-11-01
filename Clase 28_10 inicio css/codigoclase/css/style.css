@@ -1,0 +1,42 @@
+/*
+CSS -> Hoja de estilos en cascada
+
+selector{
+    propiedad: valor;
+}
+
+*/
+
+*{
+    margin: 0; /*Margen externo*/
+    padding: 0; /*Margen interno*/
+}
+
+body{
+    background-color: aqua;/*Color de fondo*/
+}
+
+@font-face{ /*Cargar tipografia local*/
+    src: url("../tip/BBHSansBartle-Body.ttf"); /*Ruta de la tipografia*/
+    font-family: 'badeen'; /*Nombre que le quiero dar a la tipografia*/
+}
+
+h1{
+    color: red; /*Color de la letra*/
+    font-family: 'badeen'; /*Aplicar tipografia*/
+    font-size: 60px; /* Tamaño fuente*/
+    text-align: center; /*Texto alineado al centro*/
+}
+
+p{
+    color: blue;
+    font-size: 30px;
+    font-weight: bold; /*Teexto en negrita*/
+    font-style: italic; /*Texto en cursiva*/
+    /*font-family: 'badeen';*/
+    /*font-family: "Badeen Display", system-ui;*/
+}
+
+span{
+    font-size: 60px;
+}
