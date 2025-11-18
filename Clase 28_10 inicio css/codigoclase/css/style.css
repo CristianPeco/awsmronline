@@ -12,7 +12,7 @@ selector{
     padding: 0; /*Margen interno*/
 }
 
-body{
+body{ /* selector de etiqueta*/
     background-color: aqua;/*Color de fondo*/
 }
 
@@ -31,7 +31,7 @@ h1{
 p{
     color: blue;
     font-size: 30px;
-    font-weight: bold; /*Teexto en negrita*/
+    font-weight: bold; /*Texto en negrita*/
     font-style: italic; /*Texto en cursiva*/
     /*font-family: 'badeen';*/
     /*font-family: "Badeen Display", system-ui;*/

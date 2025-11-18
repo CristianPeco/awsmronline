@@ -1,0 +1,13 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: content-box;
+}
+
+.caja1{
+    border: solid 3px red;
+    font-size: 60px;
+    width: 300px;
+    margin-left: 200px;
+    margin-top: 10%;
+}
